@@ -1,0 +1,99 @@
+# Week 5-6 Experiment Configuration for Person C
+# Comprehensive evaluation pipeline configuration
+
+data:
+  features_file: "../svm/data/clean_options_synth.csv"
+  embeddings_dir: "../data/embeddings"
+  output_dir: "results"
+  figures_dir: "figures"
+
+# Data splitting configuration
+split:
+  method: "time_aware"  # temporal split to respect time series nature
+  test_fraction: 0.2
+  validation_fraction: 0.2  # from remaining training data
+  random_seed: 42
+
+# Model configurations
+models:
+  svm:
+    kernels: ["rbf", "poly", "linear", "sigmoid"]
+    hyperparameters:
+      C: [0.1, 1, 10, 100]
+      gamma: ["scale", 0.01, 0.1, 1.0]
+      degree: [2, 3, 4]  # for polynomial kernel
+    class_weight: "balanced"
+    probability: true
+    
+  baselines:
+    ols:
+      fit_intercept: true
+    logistic:
+      multi_class: "multinomial"
+      solver: "lbfgs"
+      max_iter: 1000
+      class_weight: "balanced"
+    random_forest:
+      n_estimators: 100
+      max_depth: 10
+      class_weight: "balanced"
+      random_state: 42
+    xgboost:
+      n_estimators: 100
+      max_depth: 6
+      learning_rate: 0.1
+      objective: "multi:softprob"
+      random_state: 42
+
+# Kernel PCA embedding configurations
+embeddings:
+  kernels: ["linear", "rbf", "poly", "sigmoid"]
+  n_components: [5, 7, 8]
+  test_all_combinations: true
+
+# Cross-validation configuration
+cross_validation:
+  method: "TimeSeriesSplit"
+  n_splits: 5
+  scoring_metrics: ["f1_macro", "accuracy", "roc_auc_ovr"]
+  primary_metric: "f1_macro"
+
+# Statistical testing configuration
+statistics:
+  confidence_level: 0.95
+  bootstrap_samples: 1000
+  significance_level: 0.05
+  multiple_testing_correction: "bonferroni"
+
+# Robustness testing
+robustness:
+  volatility_regimes:
+    low_vix_threshold: 20
+    high_vix_threshold: 30
+  sensitivity_analysis:
+    parameter_variations: 0.1  # ±10% parameter variation
+    n_trials: 50
+
+# Economic backtesting
+backtesting:
+  position_mapping:
+    underpriced: 1    # long position
+    fair: 0          # no position  
+    overpriced: -1   # short position
+  transaction_costs: 0.001  # 0.1% per trade
+  risk_free_rate: 0.02     # 2% annual
+  trading_days_per_year: 252
+
+# Visualization settings
+plotting:
+  style: "seaborn-v0_8"
+  figsize: [12, 8]
+  dpi: 300
+  save_formats: ["png", "pdf"]
+  
+# Logging and reproducibility
+logging:
+  level: "INFO"
+  track_experiments: true
+  save_models: true
+  save_predictions: true
