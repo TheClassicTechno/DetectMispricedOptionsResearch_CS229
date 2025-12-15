@@ -261,13 +261,7 @@ CS229_QuantML_Project/
 **Total submission size: 31.9 KB (compressed) / 85.8 KB (uncompressed)**  
 Well under the 5 MB limit!
 
----
 
-## Repository Link
-
-**GitHub:** [https://github.com/TheClassicTechno/CS229_QuantML_Project](https://github.com/TheClassicTechno/CS229_QuantML_Project)
-
-Or download the code zip file: `CS229_QuantML_Project_Code.zip`
 
 ---
 
@@ -295,7 +289,4 @@ Contact us at:
 - Jake Cheng: jiajunc4@stanford.edu  
 - Rupert Lu: rupertlu@stanford.edu
 
----
-
-**Last Updated:** December 5, 2025  
 
