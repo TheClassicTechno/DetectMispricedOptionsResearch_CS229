@@ -1,4 +1,4 @@
-# CS229 Options Mispricing Detection Project
+# CS229 Options Mispricing Detection ML Research
 
 **Discovering Nonlinear Latent Drivers of Option Mispricing via Kernel PCA, Support Vector Machines, and Enhanced Feature Engineering**
 
