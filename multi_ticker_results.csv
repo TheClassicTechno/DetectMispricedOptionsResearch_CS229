@@ -1,0 +1,4 @@
+ticker,n_contracts,test_accuracy,test_f1,cv_accuracy_mean,cv_accuracy_std,cv_f1_mean,cv_f1_std,backtest_trades,backtest_win_rate,backtest_sharpe
+AAPL,340994,0.913,0.807,0.963,0.046,0.770,0.098,20885,0.872,2.00
+SPY,861151,0.982,0.665,0.998,0.002,0.654,0.015,110494,0.982,2.00
+TSLA,842096,0.827,0.735,0.888,0.106,0.787,0.143,22705,0.662,1.48
